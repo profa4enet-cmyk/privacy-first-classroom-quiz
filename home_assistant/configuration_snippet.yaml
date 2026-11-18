@@ -1,0 +1,30 @@
+# Add this snippet to your Home Assistant configuration.yaml
+
+# 1. RESTful sensor fetching the active question from Google Sheets (via Apps Script doGet)
+rest:
+  - resource: "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL"
+    scan_interval: 5
+    sensor:
+      - name: "Active Quiz Question"
+        unique_id: active_quiz_question
+        value_template: "{{ value_json.question }}"
+        json_attributes:
+          - row
+
+# 2. Input helpers storing the latest live answer from each student node (ID01 - ID05)
+input_text:
+  quiz_student_01:
+    name: "Student ID01 Answer"
+    initial: "-"
+  quiz_student_02:
+    name: "Student ID02 Answer"
+    initial: "-"
+  quiz_student_03:
+    name: "Student ID03 Answer"
+    initial: "-"
+  quiz_student_04:
+    name: "Student ID04 Answer"
+    initial: "-"
+  quiz_student_05:
+    name: "Student ID05 Answer"
+    initial: "-"
