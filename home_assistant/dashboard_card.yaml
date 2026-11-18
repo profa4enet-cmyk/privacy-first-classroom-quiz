@@ -1,0 +1,28 @@
+# Home Assistant Lovelace Dashboard Card (Vertical Stack: Active Question + Student Live Status)
+type: vertical-stack
+cards:
+  - type: markdown
+    title: "📋 Active Classroom Question"
+    content: >
+      ### {{ states('sensor.active_quiz_question') }}
+      *Row #{{ state_attr('sensor.active_quiz_question', 'row') }} in QandA Sheet*
+
+  - type: entities
+    title: "🎓 Live Student Responses (micro:bit Nodes)"
+    show_header_toggle: false
+    entities:
+      - entity: input_text.quiz_student_01
+        name: "Student 1 (ID01)"
+        icon: mdi:account-school
+      - entity: input_text.quiz_student_02
+        name: "Student 2 (ID02)"
+        icon: mdi:account-school
+      - entity: input_text.quiz_student_03
+        name: "Student 3 (ID03)"
+        icon: mdi:account-school
+      - entity: input_text.quiz_student_04
+        name: "Student 4 (ID04)"
+        icon: mdi:account-school
+      - entity: input_text.quiz_student_05
+        name: "Student 5 (ID05)"
+        icon: mdi:account-school
